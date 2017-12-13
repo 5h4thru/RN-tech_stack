@@ -1,0 +1,39 @@
+// create a reducer
+const reducer = (state = [], action) => {
+  if (action.type === 'split_string') {
+    return action.payload.split('');
+  }
+  if (action.type === 'add_character') {
+		return [ ...state, action.payload ];
+  }
+  return state;
+};
+
+// create a redux store with one reducer
+const store = Redux.createStore(reducer);
+
+// get the current state
+store.getState();
+
+// create an action to tell the reducer
+// how to update its state
+const action = { 
+  type: 'split_string',
+  payload: 'asdf'
+};
+
+store.dispatch(action);
+
+// get the current state
+store.getState();
+
+// define an action to
+// add char to end of the array
+const action2 = {
+  type: 'add_character',
+  payload: 'a'
+};
+
+store.dispatch(action2);
+
+store.getState();
